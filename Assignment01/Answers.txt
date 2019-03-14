@@ -1,0 +1,16 @@
+1:
+- All programs have at least one algorithm.
+Algorithms tell how how a program works to solve problems.
+Programs can contain many algorithms to solve larger tasks.
+
+2:
+- A variable contains a datatype such as a number, a string of text, or
+maybe an object. Variables can be assigned different values.
+
+3:
+- Variables need datatypes which define what value is
+stored inside of each variable.
+By strictly defining datatypes the compiler can check for errors.
+
+In this case the disadvantage is that the programmer must beforehand
+know what datatypes to use.
