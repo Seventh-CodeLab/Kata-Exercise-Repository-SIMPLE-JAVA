@@ -23,7 +23,7 @@ public class Main {
                 secondHalf += arr[b];
             }
 
-            // If the two values can summarize to the same number at any point, return true
+            // If the parts of the array summarize to the same integer at any point, return true
             if (firstHalf == secondHalf){
                 return true;
             }
