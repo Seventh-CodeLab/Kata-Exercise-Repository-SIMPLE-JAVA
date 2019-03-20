@@ -13,7 +13,7 @@ public class Main {
         Book b7 = new Book(1007, "The Art of Game Design", "Jesse Schell", "CRC Press", 24.31);
 
         //Creating Treemap and inserting samples
-        NavigableMap<Integer,Book> map = new TreeMap<Integer, Book>();
+        NavigableMap<Integer,Book> map = new TreeMap<Integer,Book>();
         map.put(1001,b1);
         map.put(1002,b2);
         map.put(1003,b3);
