@@ -11,9 +11,9 @@ class Rectangle extends Shape{
     }
 
     Rectangle(double width, double length, String color, boolean filled){
-        this(width,length);
-        this.setColor(color);
-        this.setFilled(filled);
+        super(color,filled);
+        this.width = width;
+        this.length = length;
     }
 
     public double getWidth() {
@@ -83,6 +83,6 @@ class Square extends Rectangle{
 
     @Override
     public String toString() {
-        return "A Circle with side = "+ super.getLength() + ", which is a subclass of " + super.toString();
+        return "A Square with sides = "+ super.getLength() + ", which is a subclass of " + super.toString();
     }
 }
