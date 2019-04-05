@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ArrayHandler {
+public abstract class ArrayHandler {
     //Task A
     public static Map<String,String> makePairs(String[] arr){
         Map<String,String> map = new HashMap<>();
