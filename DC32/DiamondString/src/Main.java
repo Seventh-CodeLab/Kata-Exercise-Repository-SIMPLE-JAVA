@@ -20,9 +20,9 @@ public class Main {
         for(int i = 0; i < output.length;i++){
             int tempChar = 0; //Used to point character in the temporary substring
             boolean incChar = true; //Used to reverse the string after coming halfway
-            for(int j = 0; j < output[i].length; j++){
+            for(int j = 0; j < output[i].length; j++){ //Iterate through row values
                 if(j > center - tempString.length() && j < center + tempString.length()){
-                    output[i][j] = tempString.charAt(tempChar);
+                    output[i][j] = tempString.charAt(tempChar); //Put a character where it belongs
 
                     //Reverse the order going back
                     if(tempChar == tempString.length()-1){ incChar = false; }
