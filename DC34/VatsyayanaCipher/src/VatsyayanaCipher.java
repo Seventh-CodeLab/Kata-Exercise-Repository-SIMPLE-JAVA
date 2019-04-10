@@ -1,8 +1,13 @@
+import java.util.ArrayList;
+
 public class VatsyayanaCipher {
     public static String[] generateTable(String keyStr1, String keyStr2, Boolean print){
         //Always set keys to caps for consistency
         keyStr1 = keyStr1.toUpperCase();
         keyStr2 = keyStr2.toUpperCase();
+
+        //List all errors that occur
+        ArrayList<String> errors = new ArrayList<>();
 
         //Check for duplicate keys
         if(keyStr1.length() != keyStr2.length()){
@@ -18,7 +23,10 @@ public class VatsyayanaCipher {
 
                     //Checks for multiple instances of a key in both strings
                     if(a1 == b2){
-                        System.err.println("ERROR: A key is used multiple times: '" + a1 + "' is found in both keystrings.");
+                        String err = "ERROR: A key is used multiple times: '" + a1 + "' is found in both keystrings.";
+                        if(!errors.contains(err)){
+                            errors.add(err);
+                        }
                         errFound = true;
                     }
 
@@ -26,11 +34,17 @@ public class VatsyayanaCipher {
 
                     //Checks for multiple instances of a key in one string
                     if (a1 == a2) {
-                        System.err.println("ERROR: A key is used multiple times: '" + a1 + "' is found multiple times in keystring: \"" + keyStr1 +"\"");
+                        String err = "ERROR: A key is used multiple times: '" + a1 + "' is found multiple times in keystring: \"" + keyStr1 +"\"";
+                        if(!errors.contains(err)){
+                            errors.add(err);
+                        }
                         errFound = true;
                     }
                     if (b1 == b2) {
-                        System.err.println("ERROR: A key is used multiple times: '" + b1 + "' is found multiple times in keystring: \"" + keyStr2 +"\"");
+                        String err = "ERROR: A key is used multiple times: '" + b1 + "' is found multiple times in keystring: \"" + keyStr2 +"\"";
+                        if(!errors.contains(err)){
+                            errors.add(err);
+                        }
                         errFound = true;
                     }
                 }
@@ -43,6 +57,11 @@ public class VatsyayanaCipher {
                 }
             }
         }
+        //Print out the errors
+        for(String err:errors){
+            System.err.println(err);
+        }
+
         return new String[]{keyStr1,keyStr2};
     }
 
@@ -50,6 +69,7 @@ public class VatsyayanaCipher {
     public static String[] generateTable(String keyStr1, String keyStr2){
         keyStr1 = keyStr1.toUpperCase();
         keyStr2 = keyStr2.toUpperCase();
+        ArrayList<String> errors = new ArrayList<>();
         if(keyStr1.length() != keyStr2.length()){
             System.err.println("ERROR: Key Strings are not of equal lengths.");
         } else {
@@ -60,18 +80,22 @@ public class VatsyayanaCipher {
                     char b1 = keyStr2.charAt(i);
                     char b2 = keyStr2.charAt(j);
                     if(a1 == b2){
-                        System.err.println("ERROR: A key is used multiple times: '" + a1 + "' is found in both keystrings.");
+                        String err = "ERROR: A key is used multiple times: '" + a1 + "' is found in both keystrings.";
+                        if(!errors.contains(err)){ errors.add(err); }
                     }
                     if (i == j){ continue; }
                     if (a1 == a2) {
-                        System.err.println("ERROR: A key is used multiple times: '" + a1 + "' is found multiple times in keystring: \"" + keyStr1 +"\"");
+                        String err = "ERROR: A key is used multiple times: '" + a1 + "' is found multiple times in keystring: \"" + keyStr1 +"\"";
+                        if(!errors.contains(err)){ errors.add(err); }
                     }
                     if (b1 == b2) {
-                        System.err.println("ERROR: A key is used multiple times: '" + b1 + "' is found multiple times in keystring: \"" + keyStr2 +"\"");
+                        String err = "ERROR: A key is used multiple times: '" + b1 + "' is found multiple times in keystring: \"" + keyStr2 +"\"";
+                        if(!errors.contains(err)){ errors.add(err); }
                     }
                 }
             }
         }
+        for(String err:errors){ System.err.println(err); }
         return new String[]{keyStr1,keyStr2};
     }
 
@@ -80,6 +104,9 @@ public class VatsyayanaCipher {
     public static String cipher(String input, String[] cipher){
         //Set input to uppercase for consistency
         input = input.toUpperCase();
+
+        //List all errors that can occur.
+        ArrayList<String> errors = new ArrayList<>();
 
         StringBuilder output = new StringBuilder();
 
@@ -103,12 +130,16 @@ public class VatsyayanaCipher {
                     }
                 } //Give out an error if the letter is not defined in the table.
             } else if (input.charAt(i) != ' ' && (!cipher[0].contains(input.substring(i, i + 1)) || !cipher[1].contains(input.substring(i, i + 1)))){
-                System.err.println("ERROR: Key does not exist in ciphertable: '" + input.charAt(i) +"'");
+                String err = "ERROR: Key does not exist in ciphertable: '" + input.charAt(i) +"'";
+                if(!errors.contains(err)){ errors.add(err); }
                 output.append(input.charAt(i)); //Appends it anyway, but without changing it.
             } else {
                 output.append(input.charAt(i)); //Add spaces
             }
         }
+        //Print errors
+        for(String err:errors){ System.err.println(err); }
+
         //Return the encrypted/decrypted text
         return output.toString();
     }
