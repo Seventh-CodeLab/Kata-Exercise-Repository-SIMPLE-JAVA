@@ -1,4 +1,5 @@
 import java.io.*;
+import java.math.BigInteger;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,13 +30,13 @@ public class Main {
                     if (l > Math.pow(1024,4)){
                         if(l > Math.pow(1024,5)){
                             if ( l > Math.pow(1024,6)){
-                                //If you have a file this big, why are you using this.
-                                return l + "EB"; //Exabyte
-                            } else { return  l + "PB"; } //Petabyte
-                        } else { return l + "TB"; } //Terabyte
-                    } else { return  l + "GB"; } //Gigabyte
-                } else { return  l + "MB"; } //Megabyte
-            } else { return l + "KB"; } //Kilobyte
+                                    //If you have a file this big, who are you. Nobody in the world can store it
+                                return l /Math.pow(1024,6) + "EB"; //Exabyte
+                            } else { return  l/Math.pow(1024,5) + "PB"; } //Petabyte
+                        } else { return l/Math.pow(1024,4) + "TB"; } //Terabyte
+                    } else { return  l/Math.pow(1024,3) + "GB"; } //Gigabyte
+                } else { return  l/Math.pow(1024,2) + "MB"; } //Megabyte
+            } else { return l/1024 + "KB"; } //Kilobyte
         } else { return l + "B"; } //Byte
     }
 
