@@ -1,1 +1,2 @@
-Hehe this is a small file
+This is the first line.
+This is the second line.

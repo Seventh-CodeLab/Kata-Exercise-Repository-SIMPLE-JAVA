@@ -45,15 +45,13 @@ public class Main {
         BufferedReader reader;
         String line;        // Contains the temporary line to count
         int linenr = 1;     // Tells which line is being read now
-        int charCount = 0;  // Counts the characters in the line
+        int charCount;  // Counts the characters in the line
         int charTotal = 0;  // Contains a total of all the characters in the document
         try{
             reader = new BufferedReader( new FileReader(filepath));
             while ((line = reader.readLine()) != null){
                 // For loop counts the characters in a line. Including spaces.
-                for(int i = 0; i < line.length(); i++){
-                    charCount++;
-                }
+                charCount = line.length();
 
                 //Prints out character counts.
                 if (charCount > 0) {
@@ -63,17 +61,16 @@ public class Main {
                 }
 
                 charTotal += charCount;  //Add the count to the total
-
-                charCount = 0; //Reset the char counter for the next line
                 linenr++;
             }
             //Print out total characters in file.
-            System.out.println("  === Total: " + charTotal + " characters -");
-
+            System.out.println(" ==== Total: " + charTotal + " characters ====");
+            reader.close();
         } catch (FileNotFoundException e){
             System.err.println("!ERROR File not found");
         } catch (IOException e){
             System.err.println("!ERROR Unable to read file");
         }
+
     }
 }
