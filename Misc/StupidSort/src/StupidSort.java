@@ -5,10 +5,14 @@ class StupidSort {
     private static long iteration = 0;
 
     static int[] stupidSort(int[] arr){
+        long start = System.currentTimeMillis();
         int[] sortedArr = randomSort(arr);
         while (!isSorted(sortedArr)){
             sortedArr = randomSort(arr);
         }
+        long finish = System.currentTimeMillis();
+        long seconds = (finish - start);
+        System.out.println("Elapsed Time: " + seconds +"ms");
         return sortedArr;
     }
 
