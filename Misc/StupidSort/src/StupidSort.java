@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 class StupidSort {
-    static int iteration = 0;
+    private static long iteration = 0;
 
     static int[] stupidSort(int[] arr){
         int[] sortedArr = randomSort(arr);
