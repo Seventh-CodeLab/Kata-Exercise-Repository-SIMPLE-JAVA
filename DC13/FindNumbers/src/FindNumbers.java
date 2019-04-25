@@ -20,26 +20,25 @@ public class FindNumbers {
     }
 
     public static int findSum(String text){
-        ArrayList<Integer> textNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> textNumbers = new ArrayList<>();
         System.out.println("=== Numbers found in text: ===");
-        int j = 0;
-        for (int i = 0; i < text.length(); i++){
-            char a = text.charAt(i);
-            if (Character.isDigit(a)){
-                textNumbers.add(j,Integer.parseInt(text.substring(i,i+1)));
-                j++;
+
+        for(int i = 0; i < text.length(); i++){
+            if (Character.isDigit(text.charAt(i))){
+                textNumbers.add(Integer.parseInt(text.substring(i,i+1)));
             }
         }
-        int sum = 0;
-        for (int i = 0; i < textNumbers.size();i++){
-            int digit = textNumbers.get(i);
-            if (i == (textNumbers.size() - 1)){
-                System.out.print(digit + " = ");
-            } else {
-                System.out.print(digit + " + ");
-            }
 
-            sum+= digit;
+        int sum = 0;
+        for (int i = 0; i < textNumbers.size(); i++){
+            int value = textNumbers.get(i);
+            System.out.print(value);
+            if(i == textNumbers.size()-1){
+                System.out.print(" = ");
+            } else {
+                System.out.print(" + ");
+            }
+            sum+= value;
         }
         return sum;
     }
