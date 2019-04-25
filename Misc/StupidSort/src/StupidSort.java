@@ -18,7 +18,7 @@ class StupidSort {
 
     //Checks if the array is sorted
     private static boolean isSorted(int[] arr){
-        System.out.println("Iteration "+ iteration + ": " + Arrays.toString(arr));
+        System.out.println("Bogosort Iteration "+ iteration + ": " + Arrays.toString(arr));
         for (int i = 1; i < arr.length; i++){
             if(arr[i] < arr[i-1]){
                 //If even one value is smaller than the one that comes before it, it's not sorted
@@ -52,6 +52,11 @@ class StupidSort {
         int[] outputArr = new int[arr.length];
         for(int i = 0; i < outputArr.length; i++){
             outputArr[indexes[i]] = arr[i];
+            try{
+                Thread.sleep(30);
+            } catch (Exception e){
+                System.err.println(e);
+            }
         }
         return outputArr;
     }
