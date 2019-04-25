@@ -8,7 +8,7 @@ public class ListOfNumbers {
     public ListOfNumbers() {
         v = new Vector(SIZE);
         for (int i = 0; i < SIZE; i++) {
-            v.addElement(new Integer(i));
+            v.addElement(i);
         }
     }
 
